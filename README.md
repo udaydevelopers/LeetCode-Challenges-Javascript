@@ -137,9 +137,31 @@ Output: false
 Input: "{{[[(())]]}}"
 Output: true
 
-## Starter Code
+## Solution 
 
 ```javascript
+function isValid(s) {
+  const stack = [];
+  const pairs = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  };
+
+  for (let char of s) {
+    if (pairs[char]) {
+      stack.push(char);
+    } else {
+      const top = stack.pop();
+      if (pairs[top] !== char) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+======================== Other Way ===============================================
 function isValid(s) {
   const stack = [];
   const pairs = {
