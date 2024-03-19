@@ -1,6 +1,6 @@
-# Problem
+# Javascript Coding Challenge
 
-## Question
+## 1. Question
 
 You are given an array of strings. Write a function that takes the array as input and returns a new array containing only the strings that have the letter 'a' in them. Ignore case sensitivity.
 
