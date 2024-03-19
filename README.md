@@ -23,7 +23,7 @@ Input: ['Elephant', 'Frog', 'Giraffe', 'Horse']
 Output: []
 
 ## Solution Code
-
+```javascript
 function filterStrings(arr) {
   return arr.filter(str => str.toLowerCase().includes('a'));
 }
@@ -32,5 +32,86 @@ function filterStrings(arr) {
 console.log(filterStrings(['Apple', 'Banana', 'Cherry', 'Date'])); // Expected output: ['Apple', 'Banana']
 console.log(filterStrings(['Antelope', 'Bear', 'Cat', 'Dog'])); // Expected output: ['Antelope', 'Cat']
 console.log(filterStrings(['Elephant', 'Frog', 'Giraffe', 'Horse'])); // Expected output: []
+```
 
+## 2. Question
+
+You are given an array of integers. Write a function that takes the array as input and returns the sum of all the even numbers in the array.
+
+For example, given the input [1, 2, 3, 4, 5, 6], the function should return 12 (which is the sum of 2, 4, and 6).
+
+## Constraints
+
+- The function should only consider even numbers for the sum.
+- The original array should not be modified.
+
+## Test Cases
+
+Input: [1, 2, 3, 4, 5, 6]
+Output: 12
+
+Input: [10, 11, 12, 13, 14, 15]
+Output: 36
+
+Input: [2, 4, 6, 8, 10]
+Output: 30
+
+## Solution
+```javascript
+function sumOfEvenNumbers(arr) {
+  return arr.reduce((sum, num) => num % 2 === 0 ? sum + num : sum, 0);
+}
+
+// Test cases
+console.log(sumOfEvenNumbers([1, 2, 3, 4, 5, 6])); // Expected output: 12
+console.log(sumOfEvenNumbers([10, 11, 12, 13, 14, 15])); // Expected output: 36
+console.log(sumOfEvenNumbers([2, 4, 6, 8, 10])); // Expected output: 30
+```
+
+## 3. Question
+
+You are given an array of numbers representing stock prices on different days. Write a function that takes the array as input and returns the maximum profit that can be achieved by buying and selling the stock at most once. If no profit can be made, return 0.
+
+For example, given the input [7, 1, 5, 3, 6, 4], the function should return 5, which is the maximum profit that can be achieved by buying on day 2 (price = 1) and selling on day 5 (price = 6).
+
+## Constraints
+
+- The function should return 0 if no profit can be made.
+- The original array should not be modified.
+
+## Test Cases
+
+Input: [7, 1, 5, 3, 6, 4]
+Output: 5
+
+Input: [7, 6, 4, 3, 1]
+Output: 0
+
+Input: [3, 6, 8, 4, 9, 1]
+Output: 6
+
+## Starter Code
+
+```javascript
+function maxProfit(prices) {
+  let minPrice = Infinity;
+  let maxProfit = 0;
+  
+  for (let price of prices) {
+    if (price < minPrice) {
+      minPrice = price;
+    } else if (price - minPrice > maxProfit) {
+      maxProfit = price - minPrice;
+    }
+  }
+  
+  return maxProfit;
+}
+
+// Test cases
+console.log(maxProfit([7, 1, 5, 3, 6, 4])); // Expected output: 5
+console.log(maxProfit([7, 6, 4, 3, 1])); // Expected output: 0
+console.log(maxProfit([3, 6, 8, 4, 9, 1])); // Expected output: 6
+
+```
 
