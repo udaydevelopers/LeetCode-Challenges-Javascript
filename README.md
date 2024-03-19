@@ -190,3 +190,47 @@ console.log(isValid("{[()()]}")); // Expected output: true
 console.log(isValid("{[(])}")); // Expected output: false
 console.log(isValid("{{[[(())]]}}")); // Expected output: true
 ````
+
+## 5. Question
+
+You are given an array of integers. Write a function that takes the array as input and returns the maximum sum of a contiguous subarray within the array. The subarray must contain at least one element.
+
+For example, given the input [-2, 1, -3, 4, -1, 2, 1, -5, 4], the function should return 6, which is the sum of the contiguous subarray [4, -1, 2, 1].
+
+## Constraints
+
+- The function should handle both positive and negative integers.
+- The original array should not be modified.
+
+## Test Cases
+
+Input: [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+Output: 6
+
+Input: [1, 2, 3, 4, 5]
+Output: 15
+
+Input: [-1, -2, -3, -4, -5]
+Output: -1
+
+## Starter Code
+
+```javascript
+function maxSubarraySum(nums) {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    currentSum = Math.max(nums[i], currentSum + nums[i]);
+    maxSum = Math.max(maxSum, currentSum);
+  }
+
+  return maxSum;
+}
+
+// Test cases
+console.log(maxSubarraySum([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // Expected output: 6
+console.log(maxSubarraySum([1, 2, 3, 4, 5])); // Expected output: 15
+console.log(maxSubarraySum([-1, -2, -3, -4, -5])); // Expected output: -1
+```
+
