@@ -90,7 +90,7 @@ Output: 0
 Input: [3, 6, 8, 4, 9, 1]
 Output: 6
 
-## Starter Code
+## Solution
 
 ```javascript
 function maxProfit(prices) {
@@ -115,3 +115,56 @@ console.log(maxProfit([3, 6, 8, 4, 9, 1])); // Expected output: 6
 
 ```
 
+## 4. Question
+
+You are given a string containing parentheses, brackets, and curly braces. Write a function that determines if the input string is valid. A valid string is one where every opening parenthesis, bracket, or curly brace has a corresponding closing parenthesis, bracket, or curly brace of the same type, and the pairs are properly nested.
+
+For example, the input "{[()()]}" is valid, but "{[(])}" is not.
+
+## Constraints
+
+- The function should return true if the input string is valid and false otherwise.
+- The original string should not be modified.
+
+## Test Cases
+
+Input: "{[()()]}"
+Output: true
+
+Input: "{[(])}"
+Output: false
+
+Input: "{{[[(())]]}}"
+Output: true
+
+## Starter Code
+
+```javascript
+function isValid(s) {
+  const stack = [];
+  const pairs = {
+    '(': ')',
+    '[': ']',
+    '{': '}'
+  };
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (char === '(' || char === '[' || char === '{') {
+      stack.push(char);
+    } else {
+      const top = stack.pop();
+      if (pairs[top] !== char) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+// Test cases
+console.log(isValid("{[()()]}")); // Expected output: true
+console.log(isValid("{[(])}")); // Expected output: false
+console.log(isValid("{{[[(())]]}}")); // Expected output: true
+````
